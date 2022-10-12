@@ -13,5 +13,4 @@ var MessageView = {
       </div>
       -->
     `)
-
 };
