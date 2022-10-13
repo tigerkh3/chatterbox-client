@@ -15,7 +15,7 @@ var RoomsView = {
   },
 
   render: function() {
-    // TODO: Render out the list of rooms.
+    // Render out the list of rooms.
 
     // we can use Rooms._data to get our data (in an array) of all room names
     // iterate over the array of all rooms data
@@ -39,8 +39,7 @@ var RoomsView = {
   },
 
   handleClick: function(event) {
-    // TODO: Handle the user clicking the "Add Room" button.
-    // text box id is #message
+    //Handle the user clicking the "Add Room" button.
     var newRoomName = window.prompt('Enter name of new room:');
     Rooms.add(newRoomName);
   }

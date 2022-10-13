@@ -24,7 +24,6 @@ var MessagesView = {
       // call the renderMessage on the current element
       MessagesView.renderMessage(currElement);
     }
-
   },
 
   renderMessage: function(message, boolean) {
