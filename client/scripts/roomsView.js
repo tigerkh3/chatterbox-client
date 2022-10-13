@@ -10,27 +10,22 @@ var RoomsView = {
     // TODO: Perform any work which needs to be done
     // when this view loads.
     RoomsView.render();
+
+    $('#rooms button').on('click', RoomsView.handleClick);
   },
 
   render: function() {
     // TODO: Render out the list of rooms.
 
-    // create storage array
-    var storage = [];
-
-    // get access to our _data
-    var messageData = Messages.retrieve();
-    // iterate through the _data
-    for (var i = 0; i < messageData.length; i++) {
-      // create variable for roomname
-      var roomName = messageData[i].roomname;
-      // conditional statement
-      if (!storage.includes(roomName) && roomName !== null && roomName !== '') {
-        renderRoom(roomName);
-        storage.push(roomname);
-      }
+    // we can use Rooms._data to get our data (in an array) of all room names
+    // iterate over the array of all rooms data
+    // call render room on each current (unique) room name
+    // this will add it
+    $('select').empty();
+    for (var i = 0; i < Rooms._data.length; i++) {
+      var roomName = Rooms._data[i];
+      RoomsView.renderRoom(roomName);
     }
-    Rooms.add(storage);
   },
 
   renderRoom: function(roomname) {
@@ -45,6 +40,9 @@ var RoomsView = {
 
   handleClick: function(event) {
     // TODO: Handle the user clicking the "Add Room" button.
+    // text box id is #message
+    var newRoomName = window.prompt('Enter name of new room:');
+    Rooms.add(newRoomName);
   }
 
 };

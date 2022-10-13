@@ -8,15 +8,15 @@ var MessagesView = {
   initialize: function() {
     // TODO: Perform any work which needs to be done
     // when this view loads.
+
     MessagesView.render();
   },
 
   render: function() {
     // TODO: Render _all_ the messages.
-
+    $('#chats').empty();
     // probably want to render the messages
     var messages = Messages.retrieve();
-    console.log(messages);
     // iterate through messages._data
     for (var i = 0; i < messages.length; i++) {
       // take the current element
@@ -27,21 +27,19 @@ var MessagesView = {
 
   },
 
-  renderMessage: function(message) {
-    // TODO: Render a single message.
-    // does something to post message
-
-    // input message would be object containing all message info
-
-    // create variable to access username
+  renderMessage: function(message, boolean) {
+    // Render a single message.
     var currUser = message.username;
-    // create variable to acces text
     var currText = message.text;
 
     var $message = $('<div class="message"></div>');
     var $text = $("<p></p>").text(currUser + ': ' + currText);
     $text.appendTo($message);
-    $message.appendTo('#chats');
+    if (boolean) {
+      $('#chats').prepend($message)
+    } else {
+      $('#chats').append($message);
+    }
   },
 
   handleClick: function(event) {
