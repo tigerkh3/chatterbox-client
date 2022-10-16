@@ -14,10 +14,17 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
 
-    // TODO: Currently, this is all handleSubmit does.
-    // Make this function actually send a message to the Parse API.
-
+    // Send a message to the Parse API.
     var messageText = document.querySelector('#message').value;
+
+    // Convert & to &amp;, Convert < to &lt;, Convert > to &gt;, Convert " to &quot;, Convert ' to &#x27;, Convert / to &#x2F;
+    // use regex expression to replace illegal values
+    var illegal = ['&', '<', '>', '"', '\'', '/'];
+    // iterate over illegal to apply regex to replace them
+    for (var i = 0; i < illegal.length; i++) {
+      var currIllegal = illegal[i];
+      messageText = messageText.replaceAll(currIllegal, 'x');
+    }
 
     var selectedRoom = document.querySelector('#rooms select').value;
 
@@ -26,9 +33,7 @@ var FormView = {
       text: messageText,
       roomname: selectedRoom
     };
-    console.log('click!');
     Parse.create(message);
-    // MessagesView.render();
   },
 
   setStatus: function(active) {

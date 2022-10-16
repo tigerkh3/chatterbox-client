@@ -30,7 +30,6 @@ var App = {
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-      // examine the response from the server request:
       // Use the data to update Messages and Rooms
       // and re-render the corresponding views.
       Messages.update(data);

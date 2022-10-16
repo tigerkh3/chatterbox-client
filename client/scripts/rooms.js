@@ -4,19 +4,12 @@
 
 var Rooms = {
 
-  // TODO: Define how you want to store the list of rooms
+  // store the list of rooms
   _data: [],
 
-  // TODO: Define methods which allow you to add rooms, update the list,
-  // mark a room as selected, etc.
   update: function (input) {
-    // get access to our _data
-    // clear out any old data
-    // iterate through the _data
     for (var i = 0; i < input.length; i++) {
-      // create variable for roomname
       var roomName = input[i].roomname;
-      // conditional statement
       if (!Rooms._data.includes(roomName) && roomName !== null && roomName !== '') {
         Rooms._data.push(roomName);
       }

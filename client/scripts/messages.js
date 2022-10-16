@@ -17,8 +17,6 @@ var Messages = {
   },
 
   add: function(message, boolean) {
-    // just add a message we created and push into _data
-    // Messages._data.push(message);
     MessagesView.renderMessage(message, boolean);
   },
 };
